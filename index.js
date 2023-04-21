@@ -18,18 +18,26 @@ let personaje_2 = {
 
 
 console.log("#### Empezar el combate ####");
-console.log(combate)
+combate(personaje_1.Vida_actual,personaje_2.Vida_actual);
 console.log("### Fin del comabte ###")
 //console.log(personaje_1.Nombre +" "+ personaje_1.Vida_actual +"/"+ personaje_1.Vida_maxima);
 //console.log(personaje_2.Nombre +" "+ personaje_2.Vida_actual +"/"+ personaje_2.Vida_maxima);
-function combate (personaje_1,personaje_2){
+function combate (){
 
-    while(personaje_1.Vida_actual == 0 || personaje_2.Vida_actual == 0){
+    while(personaje_1.Vida_actual >= 0 || personaje_2.Vida_actual >= 0){
         console.log(personaje_1.Nombre +" "+ personaje_1.Vida_actual +"/"+ personaje_1.Vida_maxima);
         console.log(personaje_2.Nombre +" "+ personaje_2.Vida_actual +"/"+ personaje_2.Vida_maxima);
-        console.log("Ataca el heroe "+ personaje_1.Vida_actual - personaje_2.Daño);
-        console.log("Ataca el Limo "+ personaje_2.Vida_actual - personaje_1.Daño);
+        personaje_1.Vida_actual = personaje_1.Vida_actual - personaje_2.Daño;
+        personaje_2.Vida_actual = personaje_2.Vida_actual - personaje_1.Daño;
+
+        if(personaje_1.Vida_actual >= 0){
+            console.log("gana el Heroe")
+        }else{
+            console.log("gana el limo")
+        }
     }
+
+    
 
 }
 
